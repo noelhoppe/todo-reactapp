@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ToDo from "../types";
 import EditModal from "./EditModal";
 
