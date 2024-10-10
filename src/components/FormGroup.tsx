@@ -1,37 +1,36 @@
 import { useState } from "react";
 
 interface Props {
-  onHandleTaskAdd : (task : string) => void
+  onHandleToDoAdd : (task : string) => void
 }
 
+export default function FormGroup({onHandleToDoAdd} : Props) {
 
-export default function FormGroup({onHandleTaskAdd} : Props) {
+  const [toDoInput, setToDoInput] = useState<string>("");
 
-  const [taskInput, setTaskInput] = useState<string>("");
-
-  function handleTaskSubmit() {
-    onHandleTaskAdd(taskInput);
-    setTaskInput("");
+  function handleToDoSubmit() {
+    onHandleToDoAdd(toDoInput);
+    setToDoInput("");
   }
 
-  
   return (
     <>
       <div className="input-group mb-3">
         <input
+          autoFocus
           type="text"
           className="form-control"
           placeholder="Enter Todo"
           aria-label="Enter Todo"
           aria-describedby="button-addToDo"
-          value={taskInput}
-          onChange={evt => setTaskInput(evt.target.value)}
+          value={toDoInput}
+          onChange={evt => setToDoInput(evt.target.value)}
         />
         <button
           className="btn btn-outline-secondary"
           type="button"
           id="button-addToDo"
-          onClick={handleTaskSubmit}
+          onClick={handleToDoSubmit}
         >
           Add
         </button>
